@@ -2,6 +2,10 @@
 
 A plugin for [PostCSS](https://github.com/ai/postcss) that generates viewport units (vw, vh, vmin, vmax) from pixel units.
 
+## Tips
+
+- Because original project on npm is not the last version!!
+
 ## Usage
 
 If your project involves a fixed width, this script will help to convert pixels into viewport units.
@@ -60,28 +64,6 @@ If your project involves a fixed width, this script will help to convert pixels 
 }
 ```
 
-### Example
-
-```js
-'use strict';
-
-var fs = require('fs');
-var postcss = require('postcss');
-var pxToViewport = require('..');
-var css = fs.readFileSync('main.css', 'utf8');
-var options = {
-    replace: false
-};
-var processedCss = postcss(pxToViewport(options)).process(css).css;
-
-fs.writeFile('main-viewport.css', processedCss, function (err) {
-  if (err) {
-    throw err;
-  }
-  console.log('File with viewport units written.');
-});
-```
-
 ### Options
 
 Default:
@@ -111,25 +93,3 @@ Default:
         - `[/^body$/]` will match `body` but not `.body`
 - `minPixelValue` (Number) Set the minimum pixel value to replace.
 - `mediaQuery` (Boolean) Allow px to be converted in media queries.
-
-### Use with gulp-postcss
-
-```js
-var gulp = require('gulp');
-var postcss = require('gulp-postcss');
-var pxtoviewport = require('postcss-px-to-viewport');
-
-gulp.task('css', function () {
-
-    var processors = [
-        pxtoviewport({
-            viewportWidth: 320,
-            viewportUnit: 'vmin'
-        })
-    ];
-
-    return gulp.src(['build/css/**/*.css'])
-        .pipe(postcss(processors))
-        .pipe(gulp.dest('build/css'));
-});
-```
