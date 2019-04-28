@@ -5,6 +5,7 @@ A plugin for [PostCSS](https://github.com/ai/postcss) that generates viewport un
 ## Tips
 
 - Because original project on npm is not the last version!!
+- Original project on npm is updated, this project is useless!!
 
 ## Usage
 
